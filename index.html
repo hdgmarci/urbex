@@ -1,15 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Urbex Location</title>
-</head>
-<body>
-    <h1>Welcome to Urbex</h1>
-    <div id="map" style="width:100%; height:400px;"></div>
+    <title>Map Display</title>
+    <style>
+        #map {
+            height: 400px;
+            width: 100%;
+        }
+        .image {
+            height: 400px;
+            width: 100%;
+            object-fit: cover;
+        }
+    </style>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">
+    </script>
     <script>
-        // Ensure map loads correctly
         function initMap() {
             var location = {lat: -34.397, lng: 150.644};
             var map = new google.maps.Map(document.getElementById('map'), {
@@ -22,14 +29,10 @@
             });
         }
     </script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">
-    </script>
-    <h2>How to Access</h2>
-    <p>Follow these instructions to access the location:</p>
-    <p>1. Take the main road from the city.
-    2. Follow the signs to the park.
-    3. Park your vehicle in the designated area.</p>
-    <img src="entry.jpg" alt="Access point image" />
+</head>
+<body>
+    <h1>Welcome</h1>
+    <div id="map"></div>
+    <img src="entry.jpg" class="image" alt="Entry">
 </body>
 </html>
