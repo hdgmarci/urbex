@@ -1,164 +1,35 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Urbex Archive – Deák Ferenc tér</title>
-
-<style>
-    body {
-        margin: 0;
-        font-family: "Segoe UI", Arial, sans-serif;
-        background: radial-gradient(circle at top, #111, #000 80%);
-        color: #e0e0e0;
-    }
-
-    header {
-        text-align: center;
-        padding: 50px 20px;
-        letter-spacing: 2px;
-    }
-
-    header h1 {
-        margin: 0;
-        font-size: 2.8rem;
-        font-weight: 300;
-    }
-
-    header p {
-        margin-top: 10px;
-        color: #777;
-    }
-
-    .container {
-        max-width: 1000px;
-        margin: auto;
-        padding: 20px;
-    }
-
-    .map-wrapper {
-    height: 520px;
-    background-size: cover;
-    background-position: center;
-    filter: grayscale(100%) contrast(120%) brightness(75%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    }   
-
-    /* darker cinematic overlay */
-    .map-wrapper::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(
-            to bottom,
-            rgba(0,0,0,0.2),
-            rgba(0,0,0,0.7)
-        );
-    }
-
-/* subtle vignette */
-    .map-wrapper::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        box-shadow: inset 0 0 120px rgba(0,0,0,0.9);
-        pointer-events: none;
-    }
-
-    iframe {
-        width: 100%;
-        height: 520px;
-        border: none;
-        filter: grayscale(100%) contrast(115%) brightness(90%);
-    }
-
-    .section {
-        margin-top: 50px;
-    }
-
-    .section h2 {
-        font-weight: 400;
-        border-bottom: 1px solid #333;
-        padding-bottom: 8px;
-    }
-
-    .log {
-        margin-top: 15px;
-        padding: 18px;
-        background: rgba(20,20,20,0.8);
-        border-left: 3px solid #444;
-        backdrop-filter: blur(4px);
-    }
-
-    footer {
-        text-align: center;
-        margin-top: 60px;
-        padding: 20px;
-        color: #555;
-        border-top: 1px solid #222;
-    }
-
-    .marker {
-        position: absolute;
-        bottom: 120px;
-        left: 45%;
-        transform: translateX(-50%);
-        font-size: 0.8rem;
-        color: #ccc;
-        border: 1px solid #555;
-        padding: 4px 8px;
-        background: rgba(0,0,0,0.6);
-    }   
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Urbex Location</title>
 </head>
-
 <body>
-
-<header>
-    <h1>Urban Exploration Archive</h1>
-    <p>Budapest – Deák Ferenc tér</p>
-</header>
-
-
-
-<div class="container">
-
-    <div class="map-wrapper">
-    <a href="https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=47.4970054,19.0568584" target="_blank">
-        
-        <div class="map-fake" style="background-image: url('deak-entry.jpg');">
-            
-            <div class="map-overlay">
-                <p>ENTRY POINT</p>
-                <span>47.4970, 19.0568</span>
-                <small>Open Street View</small>
-            </div>
-
-        </div>
-
-    </a>
-    </div>
-
-
-    <div class="section">
-        <h2>Exploration Log</h2>
-        <div class="log">
-            There is a manhole cover to enter. Its really dirty and there is electricity. Propably no cameras, but there are people. It is a Place for renting practicing rooms.
-        </div>
-    </div>
-
-    <div class="marker">ACCESS</div>
-
-</div>
-
-<footer>
-    Urbex Archive • Static Node
-</footer>
-
+    <h1>Welcome to Urbex</h1>
+    <div id="map" style="width:100%; height:400px;"></div>
+    <script>
+        // Ensure map loads correctly
+        function initMap() {
+            var location = {lat: -34.397, lng: 150.644};
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 8,
+                center: location
+            });
+            var marker = new google.maps.Marker({
+                position: location,
+                map: map
+            });
+        }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">
+    </script>
+    <h2>How to Access</h2>
+    <p>Follow these instructions to access the location:</p>
+    <p>1. Take the main road from the city.
+    2. Follow the signs to the park.
+    3. Park your vehicle in the designated area.</p>
+    <img src="entry.jpg" alt="Access point image" />
 </body>
 </html>
